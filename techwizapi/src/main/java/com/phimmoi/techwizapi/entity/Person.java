@@ -5,43 +5,31 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.Data;
 
-import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
+import java.time.LocalDate;
 
-@Getter
-@Setter
-@AllArgsConstructor
-@NoArgsConstructor
-@Builder
+@Data
 @Entity
 @Table(name = "people")
 public class Person {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 255)
     private String name;
 
-    @Column
-    private Date dob;
+    @Column(name = "dob")
+    private LocalDate dob;
 
-    @Column(name = "url_image")
+    @Column(name = "pob", length = 255)
+    private String pob;
+
+    @Column(name = "url_image", length = 255)
     private String urlImage;
 
-    @Column
-    private Integer job;  // 1 - Diễn viên, 2 - Đạo diễn
-
-    @ManyToMany(mappedBy = "people")
-    private Set<Film> films = new HashSet<>();
+    @Column(name = "career")
+    private Integer career;
 }

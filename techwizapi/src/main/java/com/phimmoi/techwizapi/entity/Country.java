@@ -6,40 +6,16 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.Data;
 
-import java.sql.Timestamp;
-import java.time.Instant;
-
-@Getter
-@Setter
-@AllArgsConstructor
-@NoArgsConstructor
-@Builder
+@Data
 @Entity
 @Table(name = "countries")
 public class Country {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 255)
     private String name;
-
-    @Column(name = "created_at", nullable = false, updatable = false)
-    private Timestamp createdAt;
-
-    @Column(name = "created_by")
-    private String createdBy;
-
-    @Column(name = "updated_at", nullable = false)
-    private Timestamp updatedAt;
-
-    @Column(name = "updated_by")
-    private String updatedBy;
 }

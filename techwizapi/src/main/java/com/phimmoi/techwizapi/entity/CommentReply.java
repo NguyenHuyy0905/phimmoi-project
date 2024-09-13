@@ -10,12 +10,15 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "categories")
-public class Category {
+@Table(name = "comment_replies")
+public class CommentReply {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false, length = 255)
-    private String name;
+    @Column(name = "parent_comment_id", nullable = false)
+    private Long parentCommentId;
+
+    @Column(name = "child_comment_id", nullable = false)
+    private Long childCommentId;
 }
