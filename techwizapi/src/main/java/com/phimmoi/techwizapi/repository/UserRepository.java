@@ -1,9 +1,11 @@
 package com.phimmoi.techwizapi.repository;
 
-import com.phimmoi.techwizapi.entity.Film;
+import com.phimmoi.techwizapi.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface FilmRepository extends JpaRepository<Film, Long> {
+public interface UserRepository extends JpaRepository<User, Long> {
+    boolean existsByUsername(String username);
+
 }

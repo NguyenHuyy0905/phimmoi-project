@@ -1,5 +1,6 @@
 package com.phimmoi.techwizapi.entity;
 
+import com.phimmoi.techwizapi.constant.enums.Career;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -31,5 +32,5 @@ public class Person {
     private String urlImage;
 
     @Column(name = "career")
-    private Integer career;
+    private Career career;
 }

@@ -1,5 +1,6 @@
 package com.phimmoi.techwizapi.entity;
 
+import com.phimmoi.techwizapi.constant.enums.ReviewStatus;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -42,7 +43,5 @@ public class Review {
     @Enumerated(EnumType.STRING)
     private ReviewStatus status;
 
-    public enum ReviewStatus {
-        PENDING, APPROVE, CANCEL
-    }
+
 }

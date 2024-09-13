@@ -1,7 +1,10 @@
 package com.phimmoi.techwizapi.entity;
 
+import com.phimmoi.techwizapi.constant.enums.Quality;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -25,8 +28,9 @@ public class Subscription {
     @Column(name = "duration_months")
     private Integer durationMonths;
 
-    @Column(name = "ultra_hd")
-    private Boolean ultraHd;
+    @Enumerated(EnumType.STRING)
+    @Column(name = "quality")
+    private Quality quality;
 
     @Column(name = "sale")
     private Integer sale;
@@ -37,6 +41,9 @@ public class Subscription {
     @Column(name = "any_device")
     private Boolean anyDevice;
 
+    @Column(name = "quantity_shared_user")
+    private Integer quantitySharedUser;
+
     @Column(name = "support_24_7")
-    private Boolean support24_7;
+    private Boolean support247;
 }

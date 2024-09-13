@@ -8,15 +8,13 @@ import lombok.experimental.UtilityClass;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
+import java.util.stream.Stream;
+
 @UtilityClass
 public class ApiResponse {
 
     public ResponseEntity<Response> ok() {
         return ResponseEntity.ok(Response.of(HttpStatus.OK.getReasonPhrase(), HttpStatus.OK.value(), null));
-    }
-
-    public ResponseEntity<Response> ok(String msg) {
-        return ResponseEntity.ok(Response.of(msg, HttpStatus.OK.value(), null));
     }
 
     public ResponseEntity<Response> ok(Object data) {
@@ -36,7 +34,11 @@ public class ApiResponse {
     }
 
     public ResponseEntity<Response> badRequest(String msg) {
-        return ResponseEntity.ok(Response.of(msg, HttpStatus.BAD_REQUEST.value(), null));
+        return ResponseEntity.ok(Response.of(HttpStatus.BAD_REQUEST.getReasonPhrase(), HttpStatus.BAD_REQUEST.value(), msg));
+    }
+
+    public ResponseEntity<Response> badRequest(Stream<String> msg) {
+        return ResponseEntity.ok(Response.of(HttpStatus.BAD_REQUEST.getReasonPhrase(), HttpStatus.BAD_REQUEST.value(), msg));
     }
 
     public ResponseEntity<Response> notFound() {
@@ -44,7 +46,7 @@ public class ApiResponse {
     }
 
     public ResponseEntity<Response> notFound(String msg) {
-        return ResponseEntity.ok(Response.of(msg, HttpStatus.NOT_FOUND.value(), null));
+        return ResponseEntity.ok(Response.of(msg, HttpStatus.NOT_FOUND.value(), msg));
     }
 
     public ResponseEntity<Response> unauthorized() {
@@ -69,6 +71,10 @@ public class ApiResponse {
 
     public ResponseEntity<Response> created(String msg) {
         return ResponseEntity.ok(Response.of(msg, HttpStatus.CREATED.value(), null));
+    }
+
+    public ResponseEntity<Response> created(Object data) {
+        return ResponseEntity.ok(Response.of(HttpStatus.CREATED.getReasonPhrase(), HttpStatus.CREATED.value(), data));
     }
 
     @Getter

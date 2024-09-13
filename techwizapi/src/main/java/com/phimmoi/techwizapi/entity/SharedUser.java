@@ -6,28 +6,19 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 @Data
 @Entity
-@Table(name = "chapters")
-@Builder
-@NoArgsConstructor
-@AllArgsConstructor
-public class Chapter {
+@Table(name = "shared_users")
+public class SharedUser {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "url_video", length = 255)
-    private String urlVideo;
+    @Column(name = "user_id", nullable = false)
+    private Long userId;
 
-    @Column(name = "film_id")
-    private Long filmId;
-
-    @Column(name = "name")
-    private String name;
+    @Column(name = "user_subscription_id", nullable = false)
+    private Long userSubscriptionId;
 }

@@ -1,11 +1,9 @@
 package com.phimmoi.techwizapi.service;
 
-import com.phimmoi.techwizapi.entity.Film;
+import com.phimmoi.techwizapi.dto.request.FilmCreateRequest;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 @Service
 public interface FilmService {
-    public List<Film> getAllFilms();
+    Long createFilm(FilmCreateRequest film);
 }

@@ -1,5 +1,7 @@
 package com.phimmoi.techwizapi.entity;
 
+import com.phimmoi.techwizapi.constant.enums.OrderStatus;
+import com.phimmoi.techwizapi.constant.enums.PaymentMethod;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -45,12 +47,4 @@ public class Order {
 
     @Column(name = "payment_date")
     private LocalDateTime paymentDate;
-
-    public enum OrderStatus {
-        PENDING, COMPLETED, FAILED
-    }
-
-    public enum PaymentMethod {
-        VNPAY, MOMO, CREDIT_CARD, PAYPAL
-    }
 }
